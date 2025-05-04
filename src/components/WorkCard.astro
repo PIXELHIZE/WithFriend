@@ -1,0 +1,14 @@
+---
+interface Work {
+  title: string;
+  slug: string;
+  cover?: string;
+}
+const { title, slug, cover } = Astro.props as Work;
+---
+<a href={`/works/${slug}`} class="block bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+  {cover && <img src={cover} alt={title} class="w-full h-40 object-cover" />}
+  <div class="p-4">
+    <h3 class="font-medium">{title}</h3>
+  </div>
+</a>

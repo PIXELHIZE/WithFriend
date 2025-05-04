@@ -1,0 +1,12 @@
+---
+interface Friend {
+  name: string;
+  slug: string;
+  avatar: string;
+}
+const { name, slug, avatar } = Astro.props as Friend;
+---
+<a href={`/friends/${slug}`} class="block p-4 bg-white rounded-lg shadow hover:shadow-lg transition">
+  <img src={avatar} alt={`${name} 프로필`} class="w-24 h-24 rounded-full mx-auto" />
+  <h3 class="mt-4 text-center font-medium">{name}</h3>
+</a>

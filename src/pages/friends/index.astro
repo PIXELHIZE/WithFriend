@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import FriendCard from '../../components/FriendCard.astro';
+
+const friends = await getCollection('friends');
+---
+<DefaultLayout title="친구 소개">
+  <section class="container mx-auto px-6 py-16">
+    <h1 class="text-3xl font-bold mb-8">친구 소개</h1>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+      {friends.map(f => (
+        <FriendCard
+          name={f.data.name}
+          slug={f.slug}
+          avatar={f.data.avatar}
+        />
+      ))}
+    </div>
+  </section>
+</DefaultLayout>

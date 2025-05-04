@@ -1,0 +1,26 @@
+---
+import { getEntry } from 'astro:content';
+import DefaultLayout from '../../layouts/DefaultLayout.astro';
+import { Markdown } from 'astro/components';
+
+const { slug } = Astro.params;
+const work = await getEntry('works', slug);
+if (!work) throw new Error(`No work: ${slug}`);
+---
+<DefaultLayout title={work.data.title}>
+  <section class="container mx-auto px-6 py-16">
+    {work.data.cover && (
+      <img
+        src={work.data.cover}
+        alt={work.data.title}
+        class="w-full max-w-3xl mx-auto rounded-lg"
+      />
+    )}
+    <h1 class="text-3xl font-bold text-center mt-6">
+      {work.data.title}
+    </h1>
+    <div class="prose prose-orange mx-auto mt-6">
+      <Markdown content={work.body} />
+    </div>
+  </section>
+</DefaultLayout>
