@@ -1,12 +1,20 @@
 ---
-import { getEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import DefaultLayout from '../../layouts/DefaultLayout.astro';
-import { Markdown } from 'astro/components';
+
+export async function getStaticPaths() {
+  const works = await getCollection('works');
+  return works.map(({ slug }) => ({ params: { slug } }));
+}
 
 const { slug } = Astro.params;
 const work = await getEntry('works', slug);
 if (!work) throw new Error(`No work: ${slug}`);
+
+const { Content } = await work.render();
 ---
+
+
 <DefaultLayout title={work.data.title}>
   <section class="container mx-auto px-6 py-16">
     {work.data.cover && (
@@ -20,7 +28,7 @@ if (!work) throw new Error(`No work: ${slug}`);
       {work.data.title}
     </h1>
     <div class="prose prose-orange mx-auto mt-6">
-      <Markdown content={work.body} />
+      <Content />
     </div>
   </section>
 </DefaultLayout>
