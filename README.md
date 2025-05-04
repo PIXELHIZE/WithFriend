@@ -1,48 +1,26 @@
-# Astro Starter Kit: Basics
+# 🧑‍🎨 친구들 웹사이트
 
-```sh
-npm create astro@latest -- --template basics
-```
+이 프로젝트는 **Astro** 기반의 정적 웹사이트로, 친구들의 프로필 및 작업물을 아름답고 인터랙티브하게 소개합니다. 최신 웹 디자인 요소와 애니메이션을 활용하여 시각적 몰입감을 제공합니다.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## ✨ 주요 기능
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **친구 소개 페이지**  
+  개별 친구 페이지마다 이미지, 태그, 소셜 링크, 스타일리시한 콘텐츠 지원
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- **작업물(Works) 페이지**  
+  최신 작업물을 카드 형태로 정렬, 썸네일 기반 미리보기 제공
 
-## 🚀 Project Structure
+- **반응형 디자인**  
+  모바일, 태블릿, 데스크탑 등 모든 화면에서 최적화
 
-Inside of your Astro project, you'll see the following folders and files:
+- **풍부한 애니메이션과 그라데이션 효과**  
+  유동적 블롭 애니메이션, 인터랙티브 hover 효과, 파티클 배경 등
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🚀 시작하기
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 1. 저장소 클론
+```bash
+git clone https://github.com/PIXELHIZE/WithFriend.git
+cd WithFriend
