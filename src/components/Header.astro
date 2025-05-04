@@ -23,68 +23,64 @@
       </h1>
     </div>
     
-    <!-- 모바일 메뉴 버튼 (항상 오른쪽) -->
-    <button id="mobile-menu-button"
-      class="md:hidden flex items-center px-3 py-2 border rounded
-             border-white/70 bg-white/10 hover:bg-white/20 hover:border-white/90
-             transition-all ml-auto">
+    <!-- 모바일 메뉴 버튼 -->
+    <button id="mobile-menu-button" type="button"
+      class="md:hidden flex items-center px-3 py-2 border rounded border-white/70 bg-white/10 hover:bg-white/20 hover:border-white/90 transition-all ml-auto">
       <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
         <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
       </svg>
     </button>
     
-    <!-- 네비게이션 영역 -->
+    <!-- 네비게이션 -->
     <nav class="relative">
       <ul id="nav-links"
-          class="hidden md:flex flex-col md:flex-row md:space-x-1 mt-4 md:mt-0
-                 bg-purple-700/100 md:bg-transparent backdrop-blur-md md:backdrop-blur-0
-                 absolute md:relative right-0 md:right-auto w-48 md:w-auto top-10 md:top-0
-                 rounded-lg md:rounded-none shadow-lg md:shadow-none p-4 md:p-0 z-50">
+          class="flex flex-col hidden md:flex md:flex-row md:space-x-4 space-y-2 md:space-y-0
+                 bg-purple-700/90 md:bg-transparent absolute right-0 top-12 w-48 md:relative md:w-auto
+                 rounded-lg md:rounded-none p-4 md:p-0 backdrop-blur-md md:backdrop-blur-0 z-50">
         <li><a href="/"       class="block px-4 py-2 md:py-1 hover:bg-white/20 rounded-lg transition-all duration-300">메인</a></li>
-        <li><a href="/friends" class="block px-4 py-2 md:py-1 hover:bg-white/20 rounded-lg transition-all duration-300">친구 소개</a></li>
-        <li><a href="/works"   class="block px-4 py-2 md:py-1 hover:bg-white/20 rounded-lg transition-all duration-300">작품</a></li>
+        <li><a href="/friends"class="block px-4 py-2 md:py-1 hover:bg-white/20 rounded-lg transition-all duration-300">친구 소개</a></li>
+        <li><a href="/works"  class="block px-4 py-2 md:py-1 hover:bg-white/20 rounded-lg transition-all duration-300">작품</a></li>
       </ul>
     </nav>
   </div>
   
-  <!-- 헤더 하단 직선 경계선 -->
+  <!-- 헤더 하단 경계선 -->
   <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-300/20 via-white/30 to-indigo-300/20"></div>
 </header>
 
-<script>
-  // 모바일 메뉴 토글 기능
+<script defer>
   document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const navLinks = document.getElementById('nav-links');
-    
-    if (mobileMenuButton && navLinks) {
-      mobileMenuButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navLinks.classList.toggle('hidden');
-      });
-      
-      // 클릭 이외의 영역 클릭 시 메뉴 닫기
-      document.addEventListener('click', (e) => {
-        if (!navLinks.contains(e.target) && !mobileMenuButton.contains(e.target)) {
-          navLinks.classList.add('hidden');
-        }
-      });
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('nav-links');
+    if (!btn || !menu) {
+      console.error('mobile-menu-button 또는 nav-links를 찾을 수 없습니다.');
+      return;
     }
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', e => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    });
   });
 </script>
 
 <style>
-  /* 애니메이션 및 추가 스타일 */
+  /* 애니메이션 */
   @keyframes slideIn {
     from { opacity: 0; transform: translateX(20px); }
-    to { opacity: 1; transform: translateX(0); }
+    to   { opacity: 1; transform: translateX(0); }
   }
-  
   #nav-links:not(.hidden) {
     animation: slideIn 0.3s ease-out forwards;
   }
   
-  /* 현재 활성화된 메뉴 아이템을 위한 스타일 */
+  /* 활성 페이지 표시 */
   :global(header a[aria-current="page"]) {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 0.5rem;
